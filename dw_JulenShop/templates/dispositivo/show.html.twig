@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dispositivo{% endblock %}
+
+{% block body %}
+    <h1>Dispositivo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dispositivo.id }}</td>
+            </tr>
+            <tr>
+                <th>Modelo</th>
+                <td>{{ dispositivo.Modelo }}</td>
+            </tr>
+            <tr>
+                <th>Marca</th>
+                <td>{{ dispositivo.Marca }}</td>
+            </tr>
+            <tr>
+                <th>Coste</th>
+                <td>{{ dispositivo.Coste }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td>{{ dispositivo.Imagen }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('dispositivo_index') }}">back to list</a>
+
+    <a href="{{ path('dispositivo_edit', {'id': dispositivo.id}) }}">edit</a>
+
+    {{ include('dispositivo/_delete_form.html.twig') }}
+{% endblock %}

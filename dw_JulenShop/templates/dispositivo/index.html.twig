@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Julen Shop{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <h1>Julen Shop</h1>
+            <button class="btn btn-outline-success" ><a href="{{ path('dispositivo_new') }}">Nuevo dispositivo</a></button>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Tienda de informática Julen Shop</h1>
+            <p class="lead">En nuestra tienda podras encontrar los mejores productos del mercado</p>
+        </div>
+    </div>
+    <table class="table">
+        
+            {% for dispositivo in dispositivos %}
+            <div class="card m-5" style="width: 18rem;">
+                <img class="card-img-top"  src="{{ dispositivo.Imagen }}" alt="Card image cap">
+                <div class="card-body">
+                    
+                    <h5 class="card-title">{{ dispositivo.Modelo }}</h5>
+                    
+                    <p class="card-text">{{ dispositivo.Marca }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Categoría: {{ dispositivo.Categoria.Nombre }}</li>
+                     <li class="list-group-item">{{ dispositivo.Coste}}€</li>
+                   
+                </ul>
+                <div class="card-body">
+                    <a href="{{ path('dispositivo_show', {'id': dispositivo.id}) }}" class="card-link">Detalles</a>
+                    <a href="{{ path('dispositivo_edit', {'id': dispositivo.id}) }}" class="card-link">Editar</a>
+                </div>
+            </div>
+            
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+    
+
+
+{% endblock %}
